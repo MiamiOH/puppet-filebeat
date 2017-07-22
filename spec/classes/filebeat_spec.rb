@@ -100,6 +100,7 @@ describe 'filebeat', type: :class do
       let :facts do
         {
           kernel: 'Windows',
+          architecture: 'x64',
           rubyversion: '1.9.3',
           puppetversion: Puppet.version,
           filebeat_version: '1.3.1'
@@ -238,6 +239,7 @@ describe 'filebeat', type: :class do
         let :facts do
           {
             kernel: 'Windows',
+            architecture: 'x64',
             rubyversion: '1.9.3',
             puppetversion: Puppet.version,
             filebeat_version: filebeat_vers
