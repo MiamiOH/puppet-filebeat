@@ -99,6 +99,8 @@ class filebeat (
 
   if $major_version == undef and getvar('::filebeat_version') == undef {
     $real_version = '5'
+  } elsif $major_version == undef and versioncmp($::filebeat_version, '6.0.0') >= 0 {
+    $real_version = '6'
   } elsif $major_version == undef and versioncmp($::filebeat_version, '5.0.0') >= 0 {
     $real_version = '5'
   } elsif $major_version == undef and versioncmp($::filebeat_version, '5.0.0') < 0 {
@@ -120,6 +122,12 @@ class filebeat (
       $real_conf_template = "${module_name}/filebeat1.yml.erb"
     } else {
       $real_conf_template = "${module_name}/filebeat5.yml.erb"
+    }
+  } elsif $real_version == '6' {
+    if $use_generic_template {
+      $real_conf_template = "${module_name}/filebeat1.yml.erb"
+    } else {
+      $real_conf_template = "${module_name}/filebeat6.yml.erb"
     }
   }
 
