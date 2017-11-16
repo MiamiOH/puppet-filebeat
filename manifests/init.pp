@@ -117,17 +117,11 @@ class filebeat (
     } else {
       $real_conf_template = "${module_name}/filebeat1.yml.erb"
     }
-  } elsif $real_version == '5' {
+  } elsif $real_version >= '5' {
     if $use_generic_template {
       $real_conf_template = "${module_name}/filebeat1.yml.erb"
     } else {
       $real_conf_template = "${module_name}/filebeat5.yml.erb"
-    }
-  } elsif $real_version == '6' {
-    if $use_generic_template {
-      $real_conf_template = "${module_name}/filebeat1.yml.erb"
-    } else {
-      $real_conf_template = "${module_name}/filebeat6.yml.erb"
     }
   }
 
