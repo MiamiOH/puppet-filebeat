@@ -1,6 +1,8 @@
+<% unless scope.function_versioncmp([@major_version, '6']) >= 0 -%>
 ---
 filebeat:
   prospectors:
+<% end -%>
     - <% if scope.function_versioncmp([scope.lookupvar('filebeat::major_version'), '6']) >= 0 %>type<% else %>input_type<% end %>: <%= @input_type %>
       paths:
         <%- @paths.each do |log_path| -%>

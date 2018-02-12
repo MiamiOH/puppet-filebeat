@@ -26,6 +26,8 @@ class filebeat::params {
   $kernel_fail_message  = "${::kernel} is not supported by filebeat."
   $conf_template        = "${module_name}/pure_hash.yml.erb"
   $disable_config_test  = false
+  $prospector_enabled   = true
+  $prospector_files     = '*.yml'
 
   # These are irrelevant as long as the template is set based on the major_version parameter
   # if versioncmp('1.9.1', $::rubyversion) > 0 {
